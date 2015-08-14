@@ -1,0 +1,16 @@
+{% extends 'FgConfigBundle:Layout:base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'layout.setting_edit'|trans({}, 'FgConfigBundle') }}</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('management_setting') }}">
+            {{ 'layout.back_to_list'|trans({}, 'FgConfigBundle') }}
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

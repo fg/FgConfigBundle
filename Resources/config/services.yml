@@ -1,0 +1,17 @@
+parameters:
+    fg_config.service.setting_service.class: Fg\Bundle\ConfigBundle\Service\SettingService
+    fg_config.twig.extension.config_template_extension.class: Fg\Bundle\ConfigBundle\Twig\Extension\ConfigTemplateExtension
+
+services:
+    fg_config.service.setting_service:
+        class: %fg_config.service.setting_service.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - 'FgConfigBundle:Setting'
+
+    fg_config.twig.extension.config_template_extension:
+        class: %fg_config.twig.extension.config_template_extension.class%
+        arguments:
+            - @fg_config.service.setting_service
+        tags:
+            - { name: twig.extension }

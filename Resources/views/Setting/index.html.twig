@@ -1,0 +1,55 @@
+{% extends 'FgConfigBundle:Layout:base.html.twig' %}
+
+{% block body %}
+    <div class="col-md-12">
+        <h1>{{ 'layout.setting_list'|trans({}, 'FgConfigBundle') }}</h1>
+
+        <table class="table records_list">
+            <thead>
+                <tr>
+                    <th>{{ 'layout.setting_id'|trans({}, 'FgConfigBundle') }}</th>
+                    <th>{{ 'layout.setting_scope_group_type'|trans({}, 'FgConfigBundle') }}</th>
+                    <th>{{ 'layout.setting_scope_by_id'|trans({}, 'FgConfigBundle') }}</th>
+                    <th>{{ 'layout.setting_section'|trans({}, 'FgConfigBundle') }}</th>
+                    <th>{{ 'layout.setting_name'|trans({}, 'FgConfigBundle') }}</th>
+                    <th>{{ 'layout.setting_value'|trans({}, 'FgConfigBundle') }}</th>
+                    <th>{{ 'layout.setting_created_at'|trans({}, 'FgConfigBundle') }}</th>
+                    <th>{{ 'layout.setting_updated_at'|trans({}, 'FgConfigBundle') }}</th>
+                    <th>{{ 'layout.actions'|trans({}, 'FgConfigBundle') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('management_setting_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.scopeGroupType }}</td>
+                    <td>{{ entity.scopeById }}</td>
+                    <td>{{ entity.section }}</td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.value }}</td>
+                    <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('management_setting_show', { 'id': entity.id }) }}">{{ 'layout.show'|trans({}, 'FgConfigBundle') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('management_setting_edit', { 'id': entity.id }) }}">{{ 'layout.edit'|trans({}, 'FgConfigBundle') }}</a>
+                        </li>
+                    </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('management_setting_new') }}">
+                    {{ 'layout.create_a_new_setting'|trans({}, 'FgConfigBundle') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% endblock %}

@@ -1,0 +1,31 @@
+{
+    "name": "fg/config-bundle",
+    "type": "symfony-bundle",
+    "description": "Settings from db",
+    "keywords": ["symfony2", "setting", "config"],
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "Fatih GÜRSOY",
+            "email": "fatihgursoy@ymail.com"
+        },
+        {
+          "name": "Open Source Lovers",
+          "homepage": "https://github.com/fg/FgConfigBundle/contributors"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2.3"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+      "psr-0": {
+        "Fg\\ConfigBundle\\": ""
+      }
+    },
+    "target-dir": "Fg/ConfigBundle"
+}
